@@ -1,6 +1,8 @@
 import { APIKey, PicOfTheDayUrl } from "../consts.component";
 import DatesPicker from "../date-picker/DatesPicker.component";
 
+import "./MainView.style.scss"
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import dateFormat from "dateformat";
