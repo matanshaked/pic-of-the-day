@@ -13,6 +13,7 @@ const MainView = () => {
 
   useEffect(() => {
     const getDataByDate = async (key, date) => {
+      setPicOfTheDayData(null);
       const formattedDate = dateFormat(date, "yyyy-mm-dd");
       const response = await axios.get(PicOfTheDayUrl, {
         params: {
@@ -31,22 +32,24 @@ const MainView = () => {
   }, [picOfTheDayData]);
 
   return (
-    picOfTheDayData?.data && (
+    
       <div>
         <DatesPicker
           chosenDate={chosenDate}
           setChosenDate={setChosenDate}
         ></DatesPicker>
-        <div>
-          <h1>{picOfTheDayData.data.title}</h1>
-          <img
-            className="picture"
-            src={picOfTheDayData.data.url}
-            alt="pic of the day"
-          />
-        </div>
+        {picOfTheDayData?.data && 
+          <div>
+            <h1>{picOfTheDayData.data.title}</h1>
+            <img
+              className="picture"
+              src={picOfTheDayData.data.url}
+              alt="pic of the day"
+            />
+          </div>
+        }
       </div>
-    )
+        
   );
 };
 
